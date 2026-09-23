@@ -1,0 +1,14 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir requests
+
+COPY gateway/ /app/gateway/
+COPY experiments/ /app/experiments/
+COPY deployment/docker/agent_entrypoint.py /app/agent_entrypoint.py
+
+ENV PYTHONPATH=/app
+ENV GATEWAY_URL=http://gateway:8000
+
+CMD ["python", "agent_entrypoint.py"]

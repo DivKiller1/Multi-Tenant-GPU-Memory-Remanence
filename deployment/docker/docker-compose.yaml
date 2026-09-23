@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.gateway
+    ports:
+      - "8000:8000"
+    volumes:
+      - gateway-data:/app/data
+
+  agent:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.agent
+    depends_on:
+      - gateway
+    environment:
+      - GATEWAY_URL=http://gateway:8000
+
+volumes:
+  gateway-data:

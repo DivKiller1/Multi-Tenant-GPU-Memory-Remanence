@@ -1,0 +1,3 @@
+# Phase 1 bare-metal dependencies only.
+# No orchestration, no serving, no DB. Phase 2+ deps added when phases activate.
+torch

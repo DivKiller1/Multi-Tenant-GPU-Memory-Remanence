@@ -1,0 +1,1402 @@
+[
+  {
+    "call_id": "EVAL-027",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 15.28,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-014",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 26.72,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-090",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 581.37,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-041",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 21.56,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-074",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 414.59,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-069",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 570.52,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-072",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 25.19,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-076",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 441.2,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-086",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 384.85,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-002",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 19.39,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-037",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 39.69,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-003",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 7.92,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-066",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 513.85,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-087",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 261.85,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-024",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 7.75,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-052",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "get_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 37.81,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-031",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 14.01,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-033",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 9.46,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-064",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 11.89,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-026",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 28.83,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-036",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 38.62,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-098",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 417.97,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-049",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 9.53,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-011",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 14.46,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-063",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 339.41,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-015",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 23.55,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-075",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 31.53,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-085",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 31.06,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-013",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 29.74,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-062",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 269.62,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-025",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 17.26,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-005",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 27.4,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-046",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 6.31,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-045",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 39.65,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-097",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 450.27,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-080",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "get_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 384.77,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-030",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 15.66,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-070",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 22.1,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-061",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 27.37,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-017",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 25.04,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-095",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 599.46,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-032",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 13.9,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-088",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 20.26,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-000",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 8.9,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-022",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 16.73,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-006",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 17.16,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-018",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 29.12,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-054",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 469.6,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-019",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 9.22,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-055",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 34.55,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-073",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 398.06,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-084",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 24.78,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-010",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 38.59,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-001",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 13.34,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-038",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 35.75,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-071",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 35.81,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-012",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 31.67,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-044",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 33.98,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-093",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 34.36,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-057",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "get_secret",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 380.19,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-043",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 27.98,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-094",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 12.04,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-016",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 15.51,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-040",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 29.71,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-099",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 412.38,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-048",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 24.84,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-068",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 35.34,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-035",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "get_metrics",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 18.75,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-081",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 32.86,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-065",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 22.74,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-051",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 26.23,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-042",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 5.09,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-053",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 22.22,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-096",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 8.63,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-039",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 34.56,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-092",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 30.72,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-058",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 11.56,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-029",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 29.79,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-082",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "get_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 27.62,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-007",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 14.08,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-047",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 30.62,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-004",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_services",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 25.71,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-091",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 23.08,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-009",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "read_database",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 5.35,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-079",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 254.36,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-020",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 10.11,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-021",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 32.45,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-028",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 12.65,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-078",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "write_record",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 497.77,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-089",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 23.11,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-023",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 7.55,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-050",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 13.85,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-060",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 16.86,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-077",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "get_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 407.09,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-034",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "health_check",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 6.52,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-083",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "admin_reset",
+    "requested_namespace": "namespace-B",
+    "required_privilege": "DELETE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 347.12,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-056",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "delete_secret",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-B",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 13.23,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-059",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-C",
+    "required_privilege": "WRITE",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 24.45,
+    "simulated_output": "db-password=super_secret api-key=abc user1@corp.com"
+  },
+  {
+    "call_id": "EVAL-008",
+    "scenario": "BENIGN",
+    "is_malicious": false,
+    "tool": "list_pods",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "READ",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 30.62,
+    "simulated_output": "safe benign output"
+  },
+  {
+    "call_id": "EVAL-067",
+    "scenario": "MALICIOUS",
+    "is_malicious": true,
+    "tool": "exec_pod",
+    "requested_namespace": "namespace-A",
+    "required_privilege": "ADMIN",
+    "target_tenant": "tenant-A",
+    "parameters": {
+      "param1": "val1"
+    },
+    "c_actual": 421.06,
+    "simulated_output": "safe benign output"
+  }
+]
