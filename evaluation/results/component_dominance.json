@@ -1,0 +1,23 @@
+{
+  "overall": {
+    "CDDI": 474,
+    "RVS": 92,
+    "PERAI": 343,
+    "LR": 0,
+    "Tie": 91
+  },
+  "benign": {
+    "CDDI": 0,
+    "RVS": 28,
+    "PERAI": 133,
+    "LR": 0,
+    "Tie": 0
+  },
+  "malicious": {
+    "CDDI": 474,
+    "RVS": 64,
+    "PERAI": 210,
+    "LR": 0,
+    "Tie": 91
+  }
+}

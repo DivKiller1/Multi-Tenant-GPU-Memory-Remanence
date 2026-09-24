@@ -1,0 +1,14 @@
+{
+  "total_transitions": 500,
+  "unsafe_transitions": 231,
+  "full_cpsi_prevented": 178,
+  "agent_only_prevented": 56,
+  "resource_only_prevented": 64,
+  "infrastructure_only_prevented": 0,
+  "d1_unique_prevented": 0,
+  "d2_unique_prevented": 0,
+  "d3_unique_prevented": 58,
+  "full_cpsi_only_prevented": 58,
+  "full_cpsi_additional_prevention": 0,
+  "full_cpsi_unique_sanitization": 58
+}

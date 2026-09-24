@@ -1,0 +1,21 @@
+Work,Year,Agent Identity,Tool Authorization,Behavioral/Sequence Analysis,Resource State,GPU/Accelerator State,Remanence,Tenant Isolation,Tenant Transition,Runtime Enforcement,Benchmark/Evaluation,Relationship to This Work,Distinctive Gap
+AgentVisor,2024,YES,YES,YES,NO,NO,NO,NO,NO,YES,NO,Agent observability and dynamic authorization,NO DIRECT COVERAGE FOUND for GPU/remanence or tenant transitions
+ToolSafe (TS-Bench),2024,NO,YES,NO,NO,NO,NO,NO,NO,NO,YES,Tool safety evaluation benchmarking,NO DIRECT COVERAGE FOUND for runtime isolation or GPU telemetry
+aiAuthZ,2024,YES,YES,NO,NO,NO,NO,NO,NO,YES,NO,Identity-bound tool authorization policies,NO DIRECT COVERAGE FOUND for sequence/behavior or GPU state
+ScopeGate,2024,NO,YES,NO,NO,NO,NO,YES,NO,YES,NO,Capability-based gateway for tool execution,NO DIRECT COVERAGE FOUND for accelerator state or behavioral analysis
+CaMeL,2024,NO,YES,NO,NO,NO,NO,NO,NO,NO,YES,Communication and tool safety framework,NO DIRECT COVERAGE FOUND for hardware isolation
+InjecAgent,2024,NO,NO,NO,NO,NO,NO,NO,NO,NO,YES,Tool-integrated prompt injection benchmark,NO DIRECT COVERAGE FOUND for defensive enforcement
+AgentDojo,2024,NO,YES,NO,NO,NO,NO,NO,NO,NO,YES,Dynamic agent/tool environment for injection,NO DIRECT COVERAGE FOUND for cross-plane telemetry
+LeftoverLocals,2024,NO,NO,NO,NO,YES,YES,YES,NO,NO,YES,Demonstrated GPU remanence leakage across processes,NO DIRECT COVERAGE FOUND for LLM agent integration or admission control
+Agent Security Bench (ASB),2024,NO,YES,YES,NO,NO,NO,NO,NO,NO,YES,Evaluation of agent interaction safety,NO DIRECT COVERAGE FOUND for infrastructure mapping
+AgentSpec,2024,NO,YES,YES,NO,NO,NO,NO,NO,NO,NO,Formal specification for agent behaviors,NO DIRECT COVERAGE FOUND for enforcement or hardware tracking
+Task Shield,2024,NO,YES,NO,NO,NO,NO,NO,NO,YES,NO,Instruction/task level policy shielding,NO DIRECT COVERAGE FOUND for resource or hardware planes
+IPIGuard,2024,NO,NO,YES,NO,NO,NO,NO,NO,YES,NO,Prompt injection detection via execution tracing,NO DIRECT COVERAGE FOUND for tenant isolation
+AgentLure,2024,NO,NO,NO,NO,NO,NO,NO,NO,NO,YES,Agent attack scenarios and lure analysis,NO DIRECT COVERAGE FOUND for systemic defense mechanisms
+ARGUS,2024,NO,NO,NO,NO,NO,NO,NO,NO,NO,YES,Evaluation suite for agent reasoning under attack,NO DIRECT COVERAGE FOUND for architecture controls
+VIGIL,2023,NO,NO,NO,NO,NO,NO,NO,NO,YES,NO,Input/output filtering for LLM pipelines,NO DIRECT COVERAGE FOUND for tool/agent specific state
+NVIDIA Multi-Instance GPU (MIG),2020,NO,NO,NO,NO,YES,YES,YES,NO,YES,NO,Hardware-level GPU partitioning and isolation,NO DIRECT COVERAGE FOUND for agent behavioral integration
+Confidential Computing on GPUs,2023,NO,NO,NO,NO,YES,YES,YES,NO,YES,NO,TEE environments for GPUs,NO DIRECT COVERAGE FOUND for application-layer agent binding
+Rowhammer/GPUBreach variants,2023,NO,NO,NO,NO,YES,NO,YES,NO,NO,YES,Hardware attack vectors for GPUs,NO DIRECT COVERAGE FOUND for LLM defense frameworks
+Kubernetes Device Plugins,2019,NO,NO,NO,YES,YES,NO,YES,YES,YES,NO,Orchestration layer for GPU allocation,NO DIRECT COVERAGE FOUND for semantic remanence checking
+LLM-as-a-Service Isolation,2024,YES,NO,NO,YES,YES,NO,YES,NO,YES,NO,Tenant isolation in LLM serving endpoints,NO DIRECT COVERAGE FOUND for agentic tool interactions

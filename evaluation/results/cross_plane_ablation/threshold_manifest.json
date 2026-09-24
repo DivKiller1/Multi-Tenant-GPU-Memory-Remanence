@@ -1,0 +1,51 @@
+{
+  "A": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 1.0
+  },
+  "B": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": Infinity
+  },
+  "C": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 0.088
+  },
+  "D1": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 0.088
+  },
+  "D2": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 1.0
+  },
+  "D3": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 0.806
+  },
+  "E": {
+    "constraint": 0.05,
+    "constraint_feasible": true,
+    "fallback_used": false,
+    "fallback_objective": null,
+    "selected_threshold": 0.808
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "FPR_1": {
+    "target_fpr": 0.01,
+    "selected_threshold": 1.0,
+    "calibration_recall": 0.6875,
+    "calibration_precision": 1.0,
+    "calibration_f1": 0.8148148148148148,
+    "selection_rule": "maximize recall, then precision, then highest threshold",
+    "dataset_hash": "f65c83a88763177e4e94bc4d796b8f68ae8afe99f55bd1f128fe02aa10fa102c",
+    "seed": 42,
+    "model_formulation": "max(CDDI, RVS, PERAI, LR)"
+  },
+  "FPR_5": {
+    "target_fpr": 0.05,
+    "selected_threshold": 1.0,
+    "calibration_recall": 0.6875,
+    "calibration_precision": 1.0,
+    "calibration_f1": 0.8148148148148148,
+    "selection_rule": "maximize recall, then precision, then highest threshold",
+    "dataset_hash": "f65c83a88763177e4e94bc4d796b8f68ae8afe99f55bd1f128fe02aa10fa102c",
+    "seed": 42,
+    "model_formulation": "max(CDDI, RVS, PERAI, LR)"
+  },
+  "FPR_10": {
+    "target_fpr": 0.1,
+    "selected_threshold": 1.0,
+    "calibration_recall": 0.6875,
+    "calibration_precision": 1.0,
+    "calibration_f1": 0.8148148148148148,
+    "selection_rule": "maximize recall, then precision, then highest threshold",
+    "dataset_hash": "f65c83a88763177e4e94bc4d796b8f68ae8afe99f55bd1f128fe02aa10fa102c",
+    "seed": 42,
+    "model_formulation": "max(CDDI, RVS, PERAI, LR)"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "model_version": "1.0.0-calibrated",
+  "cpsi_formulation": "max(CDDI, RVS, PERAI, LR)",
+  "weights": "fixed_architecture",
+  "threshold": 0.02,
+  "calibration_seed": 42,
+  "calibration_dataset_hash": "f65c83a88763177e4e94bc4d796b8f68ae8afe99f55bd1f128fe02aa10fa102c",
+  "generation_version": "v2",
+  "timestamp": "2026-09-23T22:14:02.581922Z"
+}

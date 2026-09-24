@@ -1,0 +1,58 @@
+{
+  "A": {
+    "Unsafe transitions": 231,
+    "Prevented": 56,
+    "Allowed": 175,
+    "Sanitization Triggered": 56,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 444
+  },
+  "B": {
+    "Unsafe transitions": 231,
+    "Prevented": 0,
+    "Allowed": 231,
+    "Sanitization Triggered": 0,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 500
+  },
+  "C": {
+    "Unsafe transitions": 231,
+    "Prevented": 64,
+    "Allowed": 167,
+    "Sanitization Triggered": 64,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 436
+  },
+  "D1": {
+    "Unsafe transitions": 231,
+    "Prevented": 120,
+    "Allowed": 111,
+    "Sanitization Triggered": 120,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 380
+  },
+  "D2": {
+    "Unsafe transitions": 231,
+    "Prevented": 56,
+    "Allowed": 175,
+    "Sanitization Triggered": 56,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 444
+  },
+  "D3": {
+    "Unsafe transitions": 231,
+    "Prevented": 122,
+    "Allowed": 109,
+    "Sanitization Triggered": 122,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 378
+  },
+  "E": {
+    "Unsafe transitions": 231,
+    "Prevented": 178,
+    "Allowed": 53,
+    "Sanitization Triggered": 178,
+    "Sanitization Verified": 0,
+    "Tenant B Admitted": 322
+  }
+}

@@ -168,7 +168,8 @@ This result is scientifically meaningful and does NOT invalidate the project. Po
 |-----------|-------------|--------|
 | End-to-end overhead benchmark | Tenant-transition latency with vs without controls | EXECUTED |
 | Sanitization effectiveness table | RVS before/after N sanitization passes | EXECUTED |
-| CPSI detection accuracy | ROC / precision-recall vs known attack scenarios | EXECUTED |
+| CPSI detection accuracy | ROC / precision-recall vs known attack scenarios (Full CPSI AUC: 0.8741) | EXECUTED |
+| Cross-Plane Ablation | Unique Tenant-Transition Preventions (58 cases uniquely prevented) | EXECUTED |
 | Threat model section | Maps to literature: LeftoverLocals, InjecAgent, ScopeGate | EXECUTED |
 | Paper draft (Phase 4) | Experimental results section | EXECUTED |
 
@@ -196,7 +197,7 @@ This result is scientifically meaningful and does NOT invalidate the project. Po
 | Phase 2 Run 4 | Integrated PERAI estimator. Accuracy = 95.03%. | gateway/tool_gateway.py, gateway/perai.py |
 | Phase 2 Run 5 | Integrated RVS (SR + SSR). TC-008b and TC-010 Quarantined. | gateway/tool_gateway.py, gateway/rvs.py |
 | Live Integration | Containerized Gateway/Agent via Docker, provisioned local K3s via kind, and successfully proved crossplane controller interception logic over a live cluster. | deployment/, crossplane/k8s_controller.py |
-| Phase 4 | Evaluated AUC (0.9900) and TTSO overhead, formalized threat model and final empirical results. | evaluation/, THREAT_MODEL.md, PAPER_RESULTS_SECTION.md |
+| Phase 4 | Evaluated historical AUC (0.9900, superseded) -> Final Synthetic (0.8741), unique preventions (58). Formalized threat model. | evaluation/, THREAT_MODEL.md, PAPER_RESULTS_SECTION.md |
 
 ---
 *Last updated: Phase 4 EXECUTED — Paper Metrics Drafted — 2026-09-24*

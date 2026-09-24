@@ -1,0 +1,15 @@
+Configuration,Population,ROC-AUC,PR-AUC,Recall,FPR,Attack Prevention,Unique Cross-Plane Prevention
+Agent,Internal,0.7455303933253874,0.9590303933253873,0.49106078665077474,0.0,412,
+Infrastructure,Internal,0.5787168989998446,0.9004217867520468,0.0,0.0,0,
+Resource,Internal,0.7181612241725213,0.9403185422016895,0.48152562574493446,0.055900621118012424,404,
+Agent + Resource,Internal,0.8546924392392601,0.9726902219954826,0.7318235995232419,0.055900621118012424,614,
+Agent + Infrastructure,Internal,0.753122246981396,0.9538576239446526,0.49106078665077474,0.0,412,
+Resource + Infrastructure,Internal,0.7129531607429725,0.937489731876672,0.33492252681764006,0.0,281,
+Full CPSI,Internal,0.8741366163504319,0.9761190604339303,0.6579261025029798,0.0,552,0.0
+Agent,AgentDojo,1.0,1.0,1.0,0.0,6775,
+Infrastructure,AgentDojo,N/A (partial),N/A (partial),0.0,0.0,0,
+Resource,AgentDojo,,,0.0,0.0,0,
+Agent + Resource,AgentDojo,1.0,1.0,1.0,0.0,6775,
+Agent + Infrastructure,AgentDojo,N/A (partial),N/A (partial),1.0,0.0,6775,
+Resource + Infrastructure,AgentDojo,N/A (partial),N/A (partial),0.0,0.0,0,
+Full CPSI,AgentDojo,1.0,1.0,1.0,0.0,6775,

@@ -1,0 +1,7 @@
+Security Event,Agent,Infrastructure,Resource,Agent + Resource,Agent + Infrastructure,Resource + Infrastructure,Full CPSI
+Privilege violation,,,,,,,
+Cross-tenant attempt,1.0,0.0,0.6666666666666666,1.0,1.0,0.5,1.0
+Resource amplification,,,,,,,
+Remanence,,,,,,,
+Sanitization requirement,,,,,,,
+Unsafe tenant transition,0.24242424242424243,0.0,0.27705627705627706,0.5194805194805194,0.24242424242424243,0.5281385281385281,0.7705627705627706

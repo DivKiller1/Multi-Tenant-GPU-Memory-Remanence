@@ -1,0 +1,37 @@
+{
+  "None": {
+    "Recall": 0.0,
+    "FPR": 1.0,
+    "N": 161
+  },
+  "composite": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 191
+  },
+  "cross_tenant": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 116
+  },
+  "namespace_violation": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 105
+  },
+  "output_leakage": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 87
+  },
+  "privilege_escalation": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 153
+  },
+  "resource_amplification": {
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "N": 187
+  }
+}

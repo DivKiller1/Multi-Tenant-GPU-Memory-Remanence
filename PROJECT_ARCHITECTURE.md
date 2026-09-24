@@ -118,9 +118,9 @@ CPSI = F(AgentState, GPUState, RemanenceState)
 | Phase | Title | Objective | Status |
 |-------|-------|-----------|--------|
 | 1 | GPU Remanence Baseline | Prove/disprove physical VRAM leakage across OS-process boundaries. Measure LR(t). | VALIDATED (LR=0.0, theta=0, driver zeroing confirmed) |
-| 2 | Agent Divergence Measurement | Implement AADV/CDDI pipeline. Measure PERAI estimator accuracy. Extend RVS with SR/SSR. | IN_PROGRESS |
-| 3 | Cross-Plane Binding & Control | Implement CPSI. Bind agent identity to GPU lifecycle. Enforce admission gating. | TODO |
-| 4 | Evaluation & Paper Metrics | End-to-end overhead, sanitization effectiveness, detection accuracy, threat modeling. | TODO |
+| 2 | Agent Divergence Measurement | Implement AADV/CDDI pipeline. Measure PERAI estimator accuracy. Extend RVS with SR/SSR. | VALIDATED |
+| 3 | Cross-Plane Binding & Control | Implement CPSI. Bind agent identity to GPU lifecycle. Enforce admission gating. | VALIDATED |
+| 4 | Evaluation & Paper Metrics | End-to-end overhead, sanitization effectiveness, detection accuracy, threat modeling. | VALIDATED |
 
 ---
 

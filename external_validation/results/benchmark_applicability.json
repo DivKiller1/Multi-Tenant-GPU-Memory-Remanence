@@ -1,0 +1,30 @@
+{
+  "InjecAgent": {
+    "tool_use_present": true,
+    "prompt_injection_present": true,
+    "multi_step_behavior": false,
+    "data_exfiltration_present": true,
+    "privilege_boundary_present": true,
+    "resource_behavior_observable": true,
+    "identity_signal_available": true,
+    "RVS_available": true,
+    "PERAI_available": true,
+    "LR_available": false,
+    "full_cpsi_available": false,
+    "execution_mode": "static_cases"
+  },
+  "AgentDojo": {
+    "tool_use_present": true,
+    "prompt_injection_present": true,
+    "multi_step_behavior": true,
+    "data_exfiltration_present": true,
+    "privilege_boundary_present": true,
+    "resource_behavior_observable": true,
+    "identity_signal_available": true,
+    "RVS_available": true,
+    "PERAI_available": true,
+    "LR_available": false,
+    "full_cpsi_available": false,
+    "execution_mode": "dynamic_traces"
+  }
+}

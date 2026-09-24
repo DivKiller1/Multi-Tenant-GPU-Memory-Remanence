@@ -1,0 +1,26 @@
+{
+  "FPR_1": {
+    "target_fpr": 0.01,
+    "frozen_threshold": 1.0,
+    "test_roc_auc": 0.855910245115821,
+    "test_recall": 0.700834326579261,
+    "test_fpr": 0.0,
+    "test_f1": 0.8241065171688858
+  },
+  "FPR_5": {
+    "target_fpr": 0.05,
+    "frozen_threshold": 1.0,
+    "test_roc_auc": 0.855910245115821,
+    "test_recall": 0.700834326579261,
+    "test_fpr": 0.0,
+    "test_f1": 0.8241065171688858
+  },
+  "FPR_10": {
+    "target_fpr": 0.1,
+    "frozen_threshold": 1.0,
+    "test_roc_auc": 0.855910245115821,
+    "test_recall": 0.700834326579261,
+    "test_fpr": 0.0,
+    "test_f1": 0.8241065171688858
+  }
+}

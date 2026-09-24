@@ -1,0 +1,56 @@
+{
+  "InjecAgent": {
+    "N": 1054,
+    "Attacks": 1054,
+    "ROC-AUC": 0.0,
+    "PR-AUC": 0.0,
+    "Precision": 1.0,
+    "Recall": 1.0,
+    "F1": 1.0,
+    "FPR": 0.0,
+    "FNR": 0.0,
+    "dominance": {
+      "benign": {
+        "CDDI": 0,
+        "RVS": 0,
+        "PERAI": 0,
+        "LR": 0,
+        "Tie": 0
+      },
+      "malicious": {
+        "CDDI": 1054,
+        "RVS": 0,
+        "PERAI": 0,
+        "LR": 0,
+        "Tie": 0
+      }
+    }
+  },
+  "AgentDojo": {
+    "N": 6899,
+    "Attacks": 6775,
+    "ROC-AUC": 0.5,
+    "PR-AUC": 0.9910131903174373,
+    "Precision": 0.9820263806348746,
+    "Recall": 1.0,
+    "F1": 0.9909316951879479,
+    "FPR": 1.0,
+    "FNR": 0.0,
+    "dominance": {
+      "benign": {
+        "CDDI": 124,
+        "RVS": 0,
+        "PERAI": 0,
+        "LR": 0,
+        "Tie": 0
+      },
+      "malicious": {
+        "CDDI": 6775,
+        "RVS": 0,
+        "PERAI": 0,
+        "LR": 0,
+        "Tie": 0
+      }
+    }
+  }
+}

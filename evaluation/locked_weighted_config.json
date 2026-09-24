@@ -1,0 +1,16 @@
+{
+  "model_version": "1.0.0-weighted",
+  "cpsi_formulation": "sigmoid(w1*CDDI + w2*RVS + w3*PERAI + w4*LR + intercept)",
+  "weights": {
+    "CDDI": 159.47830601852033,
+    "RVS": 5.846729178799437,
+    "PERAI": 129.80049541422767,
+    "LR": 1.0
+  },
+  "intercept": -2.3437820783037933,
+  "threshold": 0.0,
+  "calibration_seed": 42,
+  "calibration_objective": "Non-negative logistic regression, threshold F1-maximized",
+  "calibration_dataset_hash": "f65c83a88763177e4e94bc4d796b8f68ae8afe99f55bd1f128fe02aa10fa102c",
+  "timestamp": "2026-09-23T22:22:38.518427Z"
+}
