@@ -2,74 +2,74 @@
 
 ### Independent Synthetic Evaluation
 
-The evaluation uses a deterministic dataset of 1,500 scenarios, consisting of 500 calibration scenarios and 1,000 independently held-out test scenarios. The calibration set contains 423 malicious and 77 benign scenarios, while the test set contains 839 malicious and 161 benign scenarios. No overlap was detected at the scenario-ID, exact-record, or normalized-record level.
+The evaluation uses a deterministic dataset of 1,500 scenarios (500 calibration, 1,000 held-out test). The test set contains 839 malicious and 161 benign scenarios (84% malicious base rate). No overlap was detected at the scenario-ID, exact-record, or normalized-record level. No random or majority-class baseline is included; all performance figures should be interpreted against this class imbalance and the absence of a reference baseline throughout.
 
 The primary Max-CPSI formulation is:
 
-$$
-CPSI_{\mathrm{max}} =
-\max(CDDI,\;RVS,\;PERAI_{\mathrm{budget}},\;LR_{\mathrm{hardware}})
-$$
+$$CPSI_{\mathrm{max}} = \max(CDDI,\;RVS,\;PERAI_{\mathrm{budget}},\;LR_{\mathrm{hardware}})$$
 
-**The cross-plane ablation was used to determine whether jointly evaluating agent, resource, and infrastructure/remanence state provides security-event coverage beyond isolated security planes.**
+A cross-plane ablation was run to determine whether jointly evaluating agent, resource, and infrastructure/remanence state provides security-event coverage beyond isolated planes.
 
-The synthetic experiment generated the following aggregate performance:
+| Configuration             | Population | ROC-AUC | PR-AUC | Recall | FPR    | Attack Prevention |
+|---------------------------|------------|--------:|-------:|-------:|-------:|------------------:|
+| Agent                     | Internal   |  0.7455 | 0.9590 | 0.4910 | 0.0    |               412 |
+| Resource                  | Internal   |  0.7181 | 0.9403 | 0.4815 | 0.0559 |               404 |
+| Infrastructure            | Internal   |  0.5787 | 0.9004 | 0.0    | 0.0    |                 0 |
+| Agent + Resource          | Internal   |  0.8546 | 0.9726 | **0.7318** | 0.0559 |         **614** |
+| Agent + Infrastructure    | Internal   |  0.7531 | 0.9538 | 0.4910 | 0.0    |               412 |
+| Resource + Infrastructure | Internal   |  0.7129 | 0.9374 | 0.3349 | 0.0    |               281 |
+| Full CPSI                 | Internal   |  **0.8741** | **0.9761** | 0.6579 | 0.0 |           552 |
 
-| Configuration             | Population | ROC-AUC | PR-AUC | Recall | FPR | Attack Prevention | Unique Cross-Plane Prevention |
-| ------------------------- | ---------- | ------: | -----: | -----: | --: | ----------------: | ----------------------------: |
-| Agent                     | Internal   |  0.7455 | 0.9590 | 0.4910 | 0.0 |               412 |                NOT APPLICABLE |
-| Resource                  | Internal   |  0.7181 | 0.9403 | 0.4815 | 0.0559 |            404 |                NOT APPLICABLE |
-| Infrastructure            | Internal   |  0.5787 | 0.9004 | 0.0    | 0.0 |                 0 |                NOT APPLICABLE |
-| Agent + Resource          | Internal   |  0.8546 | 0.9726 | 0.7318 | 0.0559 |            614 |                NOT APPLICABLE |
-| Agent + Infrastructure    | Internal   |  0.7531 | 0.9538 | 0.4910 | 0.0 |               412 |                NOT APPLICABLE |
-| Resource + Infrastructure | Internal   |  0.7129 | 0.9374 | 0.3349 | 0.0 |               281 |                NOT APPLICABLE |
-| Full CPSI                 | Internal   |  0.8741 | 0.9761 | 0.6579 | 0.0 |               552 |                             0 |
+Full CPSI achieves the highest ROC-AUC (0.8741), though Agent+Resource outperforms it on recall (0.7318 vs 0.6579) and attack prevention count (614 vs 552) at the evaluated threshold. The Infrastructure plane contributes no recall in isolation and does not improve recall when paired with Agent alone. (Unique cross-plane prevention is examined further in the tenant-transition section).
 
-This indicates that while Full CPSI improves upon isolated components, Agent + Resource (CDDI + PERAI) produced marginally better synthetic metrics for this particular internal dataset. 
+PR-AUC values across configurations are high overall, which is partly expected given the 84% malicious base rate.
 
 ---
 
 ## External Benchmark Revalidation
 
-To assess generalization beyond the internally generated workload, the frozen CPSI configurations were evaluated on independently authored external agent-security benchmarks.
-
 ### AgentDojo
-AgentDojo provides dynamic agent/tool environments for evaluating prompt-injection attacks and defenses, enabling CPSI to be evaluated over multi-step tool interactions rather than isolated prompt classification. We evaluated 6,899 AgentDojo episodes (6,775 attacks, 124 benign). 
 
-> The initial AgentDojo evaluation was invalidated during diagnostic audit because the first adapter collapsed multi-step episodes into stateless evaluation calls, producing constant CPSI scores. A corrected adapter was implemented to replay sequential actions while preserving within-episode gateway state and isolating state between episodes. External metrics were then recomputed using the corrected execution traces.
+AgentDojo provides dynamic agent/tool environments for evaluating prompt-injection attacks across multi-step tool interactions. We evaluated 6,899 episodes (6,775 attacks, 124 benign; 98% malicious base rate).
 
-The stateful AgentDojo validation yielded ROC-AUC = 1.0000, indicating perfect continuous-score ranking separation on the evaluated AgentDojo population. The fixed internal threshold nevertheless produced an external FPR of 1.0000 on the benign AgentDojo population. These continuous metrics observed strong continuous discrimination on the evaluated datasets.
+> **Note on evaluation validity:** The initial AgentDojo evaluation was invalidated during diagnostic audit. The first adapter collapsed multi-step episodes into stateless calls, producing constant CPSI scores. A corrected adapter was implemented to replay sequential actions while preserving within-episode gateway state and isolating state between episodes. All external metrics below use corrected execution traces.
 
-| Configuration             | Population | ROC-AUC | PR-AUC | Recall | FPR | Attack Prevention | Unique Cross-Plane Prevention |
-| ------------------------- | ---------- | ------: | -----: | -----: | --: | ----------------: | ----------------------------: |
-| Agent                     | AgentDojo  |  1.0000 | 1.0000 | 1.0    | 0.0 |              6775 |                NOT APPLICABLE |
-| Resource                  | AgentDojo  | NOT APPLICABLE | NOT APPLICABLE | 0.0    | 0.0 |                 0 |                NOT APPLICABLE |
-| Infrastructure            | AgentDojo  | N/A (partial)| N/A (partial)| 0.0 | 0.0 |                 0 |                NOT APPLICABLE |
-| Agent + Resource          | AgentDojo  |  1.0000 | 1.0000 | 1.0    | 0.0 |              6775 |                NOT APPLICABLE |
-| Agent + Infrastructure    | AgentDojo  | N/A (partial)| N/A (partial)| 1.0 | 0.0 |              6775 |                NOT APPLICABLE |
-| Resource + Infrastructure | AgentDojo  | N/A (partial)| N/A (partial)| 0.0 | 0.0 |                 0 |                NOT APPLICABLE |
-| Full CPSI                 | AgentDojo  |  1.0000 | 1.0000 | 1.0    | 0.0 |              6775 |                NOT APPLICABLE |
+| Configuration             | Population | ROC-AUC        | PR-AUC         | Recall | FPR | Attack Prevention |
+|---------------------------|------------|---------------:|---------------:|-------:|----:|------------------:|
+| Agent                     | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
+| Resource                  | AgentDojo  | NOT APPLICABLE | NOT APPLICABLE | 0.0    | 0.0 |                 0 |
+| Infrastructure            | AgentDojo  |   N/A (partial)|   N/A (partial)| 0.0    | 0.0 |                 0 |
+| Agent + Resource          | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
+| Agent + Infrastructure    | AgentDojo  |   N/A (partial)|   N/A (partial)| 1.0    | 0.0 |              6775 |
+| Resource + Infrastructure | AgentDojo  |   N/A (partial)|   N/A (partial)| 0.0    | 0.0 |                 0 |
+| Full CPSI                 | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
 
-(Note: Infrastructure features like GPU telemetry were unobservable in this AgentDojo execution, making components containing only Infrastructure functionally zero. This is represented as a partial/unobservable condition).
+The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating the threshold requires recalibration before this configuration could be used in deployment. Continuous discrimination and operational threshold performance are distinct; only the former is demonstrated here.
 
 ---
 
 ## Tenant-Transition Event Coverage
 
-To empirically evaluate the specific tenant-transition and GPU security lifecycle explicitly modeled by CPSI, we generated a disjoint test set of 500 deterministic transition pairs. Each pair explicitly models a "Tenant A workload → GPU release → residual state assessment → sanitization condition → Tenant B admission" sequence. The dataset contains 231 independently defined unsafe transitions and 269 safe transitions.
-
-The paired counterfactual design ensures every configuration evaluates the identical underlying transition events.
+To evaluate cross-tenant state inheritance — a distinct security objective not captured by the synthetic set — we generated 500 deterministic transition pairs modelling a Tenant A → GPU release → residual assessment → sanitization → Tenant B admission sequence. The dataset contains 231 unsafe and 269 safe transitions. The paired counterfactual design ensures every configuration evaluates the identical underlying transition events.
 
 | Configuration             | Unsafe transitions | Prevented | Allowed | Sanitization triggered | Tenant-B denied | Unique prevention |
-| ------------------------- | -----------------: | --------: | ------: | ---------------------: | --------------: | ----------------: |
+|---------------------------|-------------------:|----------:|--------:|-----------------------:|----------------:|------------------:|
 | Agent                     |                231 |        56 |     175 |                     56 |               0 |    NOT APPLICABLE |
 | Resource                  |                231 |        64 |     167 |                     64 |               0 |    NOT APPLICABLE |
 | Infrastructure            |                231 |         0 |     231 |                      0 |               0 |    NOT APPLICABLE |
 | Agent + Resource          |                231 |       120 |     111 |                    120 |               0 |                 0 |
 | Agent + Infrastructure    |                231 |        56 |     175 |                     56 |               0 |                 0 |
-| Resource + Infrastructure |                231 |       122 |     109 |                    122 |              58 |                58 |
-| Full CPSI                 |                231 |       178 |      53 |                    178 |              58 |                58 |
+| Resource + Infrastructure |                231 |       122 |     109 |                    122 |              58 |            **58** |
+| Full CPSI                 |                231 |   **178** |      53 |                    178 |              58 |            **58** |
 
-The combined cross-plane evaluation prevented 58 unsafe tenant transitions that were not prevented by any isolated single-plane configuration. These cases were also captured by the Resource+Infrastructure pair, so the ablation does not establish additional Full-CPSI prevention beyond that pairwise configuration.
+Full CPSI prevents the most unsafe transitions overall (178/231). The 58 cross-plane preventions — cases where no isolated single plane would have intervened — are fully accounted for by the Resource+Infrastructure pair. The Agent plane does not contribute additional unique preventions in this scenario type, and Full CPSI's unique prevention count matches that of Resource+Infrastructure exactly. These results confirm that cross-plane evaluation provides coverage beyond isolated components, with the incremental value driven by the Resource+Infrastructure interaction specifically.
 
-Full CPSI produced a higher aggregate synthetic ROC-AUC than CDDI + PERAI (0.8741 versus 0.8547), and the tenant-transition evaluation confirms this advantage extends to a distinct security objective: prevention of unsafe cross-tenant state inheritance and enforcement of required sanitization. The observed ROC-AUC difference was statistically discernible on the evaluated synthetic test set under paired bootstrap resampling. The observed cross-plane protections therefore provide evidence that the architecture delivers both improved aggregate discrimination and concrete systems-security value.
+Taken together, the synthetic and tenant-transition results indicate that Full CPSI offers the best aggregate discrimination (ROC-AUC 0.8741 vs 0.8546 for Agent+Resource, a difference confirmed as statistically discernible under paired bootstrap resampling), while Agent+Resource achieves higher recall at the evaluated threshold. The tenant-transition evaluation establishes a concrete systems-security advantage for cross-plane configurations, though this advantage is attributable to the Resource+Infrastructure pairing rather than to the Agent plane's inclusion.
+
+Configuration selection should follow the primary security objective:
+
+- **If aggregate discrimination is the priority**, Full CPSI is the strongest configuration (ROC-AUC 0.8741).
+- **If recall at the evaluated threshold is the priority**, Agent+Resource is preferable (recall 0.7318 vs 0.6579), at the cost of a marginally higher FPR (0.0559 vs 0.0).
+- **If tenant-transition coverage is the priority**, Resource+Infrastructure achieves equivalent unique prevention (58/58) at lower architectural complexity than Full CPSI.
+
+No single configuration dominates across all objectives. Threshold recalibration per deployment context is recommended before operationalising any configuration, particularly given the FPR instability observed on the AgentDojo benign population.
