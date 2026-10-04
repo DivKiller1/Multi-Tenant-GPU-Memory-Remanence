@@ -1,0 +1,145 @@
+{
+  "n_sessions": 1000,
+  "sweep": [
+    {
+      "threshold": 0.4,
+      "fpr": 0.729,
+      "n_flagged": 729
+    },
+    {
+      "threshold": 0.45,
+      "fpr": 0.684,
+      "n_flagged": 684
+    },
+    {
+      "threshold": 0.5,
+      "fpr": 0.639,
+      "n_flagged": 639
+    },
+    {
+      "threshold": 0.55,
+      "fpr": 0.594,
+      "n_flagged": 594
+    },
+    {
+      "threshold": 0.6,
+      "fpr": 0.549,
+      "n_flagged": 549
+    },
+    {
+      "threshold": 0.65,
+      "fpr": 0.504,
+      "n_flagged": 504
+    },
+    {
+      "threshold": 0.7,
+      "fpr": 0.459,
+      "n_flagged": 459
+    },
+    {
+      "threshold": 0.75,
+      "fpr": 0.414,
+      "n_flagged": 414
+    },
+    {
+      "threshold": 0.8,
+      "fpr": 0.369,
+      "n_flagged": 369
+    },
+    {
+      "threshold": 0.85,
+      "fpr": 0.324,
+      "n_flagged": 324
+    },
+    {
+      "threshold": 0.9,
+      "fpr": 0.278,
+      "n_flagged": 278
+    },
+    {
+      "threshold": 0.95,
+      "fpr": 0.233,
+      "n_flagged": 233
+    },
+    {
+      "threshold": 1.0,
+      "fpr": 0.188,
+      "n_flagged": 188
+    },
+    {
+      "threshold": 1.05,
+      "fpr": 0.143,
+      "n_flagged": 143
+    },
+    {
+      "threshold": 1.1,
+      "fpr": 0.098,
+      "n_flagged": 98
+    },
+    {
+      "threshold": 1.15,
+      "fpr": 0.051,
+      "n_flagged": 51
+    },
+    {
+      "threshold": 1.2,
+      "fpr": 0.009,
+      "n_flagged": 9
+    },
+    {
+      "threshold": 1.25,
+      "fpr": 0.008,
+      "n_flagged": 8
+    },
+    {
+      "threshold": 1.3,
+      "fpr": 0.006,
+      "n_flagged": 6
+    },
+    {
+      "threshold": 1.35,
+      "fpr": 0.005,
+      "n_flagged": 5
+    },
+    {
+      "threshold": 1.4,
+      "fpr": 0.003,
+      "n_flagged": 3
+    },
+    {
+      "threshold": 1.45,
+      "fpr": 0.002,
+      "n_flagged": 2
+    },
+    {
+      "threshold": 1.5,
+      "fpr": 0.001,
+      "n_flagged": 1
+    },
+    {
+      "threshold": 1.55,
+      "fpr": 0.0,
+      "n_flagged": 0
+    },
+    {
+      "threshold": 1.6,
+      "fpr": 0.0,
+      "n_flagged": 0
+    },
+    {
+      "threshold": 1.65,
+      "fpr": 0.0,
+      "n_flagged": 0
+    },
+    {
+      "threshold": 1.7,
+      "fpr": 0.0,
+      "n_flagged": 0
+    },
+    {
+      "threshold": 1.75,
+      "fpr": 0.0,
+      "n_flagged": 0
+    }
+  ]
+}
