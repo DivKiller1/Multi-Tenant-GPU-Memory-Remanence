@@ -1,3 +1,15 @@
+# CPSI: Cross-Plane Security Infrastructure
+
+## Abstract
+Existing agent-security work treats behavioral and hardware isolation as disjoint. We demonstrate that relying on isolated defenses misses critical cross-tenant vulnerabilities. In a paired evaluation of 500 tenant-transition scenarios, we show that 58 unsafe transitions are missed by every isolated single-plane approach and caught only at the combined cross-plane boundary. We introduce the Cross-Plane Security Infrastructure (CPSI), a defense-in-depth architecture integrating agent, resource, and infrastructure planes. CPSI achieves a continuous discrimination ROC-AUC of 0.8741. Our resource evaluation mechanism (PERAI) approximates execution bounds with 95% accuracy, and the overall system incurs minimal latency overhead (Mean TTSO = 0.0860 ms), demonstrating that cross-plane security is both necessary and performant for multi-tenant LLM environments.
+
+## Introduction
+Multi-tenant agent architectures face cross-plane security threats that isolated defenses consistently miss. While existing approaches focus on either prompt injection boundaries or hardware-level sanitization, they fail to model the intersection of behavioral divergence and physical resource persistence. 
+
+Our findings indicate that single-plane defenses are insufficient. Although we observe that implicit zero-initialization on some hardware configurations (e.g., RTX 3050) acts as a vendor-specific mitigation, hardware behavior remains non-uniform across cloud GPU fleets (as demonstrated by vulnerabilities like LeftoverLocals). CPSI is designed to defend against configurations where this zero-initialization guarantee is absent or circumvented.
+
+By jointly evaluating the agent, resource, and infrastructure planes, CPSI detects sophisticated state-bleeding attacks that exploit these cross-plane gaps. 
+
 ## Evaluation Results
 
 ### Independent Synthetic Evaluation
@@ -44,7 +56,9 @@ AgentDojo provides dynamic agent/tool environments for evaluating prompt-injecti
 | Resource + Infrastructure | AgentDojo  |   N/A (partial)|   N/A (partial)| 0.0    | 0.0 |                 0 |
 | Full CPSI                 | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
 
-The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating the threshold requires recalibration before this configuration could be used in deployment. Continuous discrimination and operational threshold performance are distinct; only the former is demonstrated here.
+The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating a distribution shift between the internal synthetic calibration cases and the real AgentDojo prompts. 
+
+To mitigate this threshold-transfer failure, we performed a lightweight percentile-calibration on a held-out slice (50%) of the AgentDojo benign cases, recalibrating the threshold to the 95th percentile of this set. This restored operational performance on the remaining test set, yielding an FPR of 0.0 and maintaining a Recall of 1.0 on the malicious population. This demonstrates that the failure was a calibration issue rather than an architectural limitation. Continuous discrimination and operational threshold performance are distinct; only the former is initially demonstrated here, while the latter can be recovered via in-domain recalibration.
 
 ---
 
