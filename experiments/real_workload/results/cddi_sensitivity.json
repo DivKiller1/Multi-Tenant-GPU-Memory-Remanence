@@ -1,0 +1,49 @@
+{
+  "alpha_sweep": {
+    "0.0": {
+      "p95_threshold": 1.5421,
+      "fpr_at_p95": 0.05
+    },
+    "0.1": {
+      "p95_threshold": 1.4811,
+      "fpr_at_p95": 0.05
+    },
+    "0.2": {
+      "p95_threshold": 1.4022,
+      "fpr_at_p95": 0.05
+    },
+    "0.3": {
+      "p95_threshold": 1.3323,
+      "fpr_at_p95": 0.05
+    },
+    "0.4": {
+      "p95_threshold": 1.2541,
+      "fpr_at_p95": 0.05
+    },
+    "0.5": {
+      "p95_threshold": 1.1253,
+      "fpr_at_p95": 0.05
+    },
+    "0.6": {
+      "p95_threshold": 1.0543,
+      "fpr_at_p95": 0.05
+    },
+    "0.7": {
+      "p95_threshold": 0.9855,
+      "fpr_at_p95": 0.05
+    },
+    "0.8": {
+      "p95_threshold": 0.9124,
+      "fpr_at_p95": 0.05
+    },
+    "0.9": {
+      "p95_threshold": 0.8521,
+      "fpr_at_p95": 0.05
+    },
+    "1.0": {
+      "p95_threshold": 0.7711,
+      "fpr_at_p95": 0.05
+    }
+  },
+  "n_sessions": 200
+}

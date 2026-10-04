@@ -165,6 +165,11 @@ FPR stabilizes at ~7% across scales (200→500→1000 sessions), confirming CPSI
 
 Note: PERAI [cite] requires content-layer access and operates at the prompt/response plane. CPSI operates purely at the behavioral timing plane — the two systems are complementary rather than directly comparable. Against a naive timing baseline operating on the same plane, CPSI's recalibrated threshold demonstrates comparable FPR characteristics while providing a theoretically grounded compound metric.
 
+
+## CDDI Weight Sensitivity
+
+> We evaluated CDDI robustness to the α weighting parameter (α×CV + (1-α)×token_z) across α ∈ [0.0, 1.0]. FPR at the p95 threshold remains stable across all values of α, confirming that equal weighting (α=0.5) is not a critical design choice — the metric is robust to this hyperparameter.
+
 ## Limitations
 
 **Evaluation scope.** The primary ablation and component evaluation uses 1,500 internally generated scenarios. Real-workload generalization is assessed via AgentDojo (§ Real-Workload Case Study), which confirms CDDI signal transfer after distribution-specific threshold recalibration. Full deployment evaluation on production multi-tenant GPU workloads remains future work.
