@@ -1,0 +1,1 @@
+{"model": "microsoft/phi-2", "sweep": {"mean": 0.0413, "std": 0.0237, "n": 50}, "benign": {"mean": 0.1762, "std": 0.1871, "n": 50}, "tau_tinyllama": 1.1253, "tau_phi2_estimated": 0.11, "note": "phi-2 shows 4x sweep/benign separation vs 14x for TinyLlama; per-model tau calibration required", "hardware": "cuda/T4"}
