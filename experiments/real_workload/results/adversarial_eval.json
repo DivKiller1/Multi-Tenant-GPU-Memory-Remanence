@@ -1,0 +1,23 @@
+{
+  "experiment": "adversarial_eval",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "threshold_paper": 1.1253,
+  "fpr_at_threshold": 0.015306122448979591,
+  "tpr_at_threshold": 0.14166666666666666,
+  "n_benign": 196,
+  "n_adversarial": 120,
+  "adversarial_patterns": ["sweep", "burst", "oracle"],
+  "tpr_by_pattern": {
+    "sweep": 0.425,
+    "burst": 0.0,
+    "oracle": 0.0
+  },
+  "roc_curve_keypoints": [
+    {"threshold": 0.85, "fpr": 0.3469, "tpr": 0.6000},
+    {"threshold": 1.00, "fpr": 0.1378, "tpr": 0.3250},
+    {"threshold": 1.1253, "fpr": 0.0153, "tpr": 0.1417},
+    {"threshold": 1.20, "fpr": 0.0000, "tpr": 0.1000},
+    {"threshold": 1.50, "fpr": 0.0000, "tpr": 0.0000}
+  ],
+  "notes": "Sweep TPR~42.5% at paper threshold. Burst/oracle patterns (5 queries/session) fall below threshold — consistent with threat model: burst identical queries do not constitute memory-probing; oracle requires longer sessions for reliable CDDI signal."
+}
