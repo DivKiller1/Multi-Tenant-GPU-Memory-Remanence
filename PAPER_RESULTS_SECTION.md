@@ -38,6 +38,13 @@ Full CPSI achieves the highest ROC-AUC (0.8741), though Agent+Resource outperfor
 
 **Baseline Comparison:** To demonstrate that CPSI earns its architectural complexity, we compare Full CPSI against three simpler baselines using the 1,000-case held-out test set. Baseline A (CDDI-only, representing the agent plane) achieves a ROC-AUC of 0.7455. Baseline B (PERAI-only, representing the resource plane) achieves a ROC-AUC of 0.7181. Baseline C (a majority-class classifier that always predicts the 84% malicious base rate) yields 84% raw accuracy but mathematically provides 0% recall on benign cases, rendering it useless for safe tenant admission. In contrast, Full CPSI achieves a ROC-AUC of 0.8741. This significant improvement over single-signal alternatives validates the necessity of the multi-plane integration.
 
+**Naive baselines (same test set, same ±10% tolerance threshold):**
+| Model | Accuracy | MAE |
+|---|---|---|
+| PERAI (ours) | 95.03% | 12.50 |
+| Always-predict-mean | 0.00% | 231.02 |
+| Always-predict-zero | 0.00% | 210.15 |
+
 PR-AUC values across configurations are high overall, which is partly expected given the 84% malicious base rate.
 
 ---

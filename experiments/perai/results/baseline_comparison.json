@@ -1,0 +1,15 @@
+{
+  "perai": {
+    "accuracy": 0.9503,
+    "mae": 12.5
+  },
+  "baseline_mean": {
+    "accuracy": 0.0,
+    "mae": 231.021088
+  },
+  "baseline_zero": {
+    "accuracy": 0.0,
+    "mae": 210.152
+  },
+  "n": 1000
+}
