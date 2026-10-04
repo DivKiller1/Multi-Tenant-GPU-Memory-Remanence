@@ -1,0 +1,15 @@
+{
+  "n_sessions": 1000,
+  "naive_baseline": {
+    "method": "mean + 2*std",
+    "threshold": 1.301,
+    "n_flagged": 6,
+    "fpr": 0.006
+  },
+  "cpsi_cddi": {
+    "method": "p95 recalibrated threshold",
+    "threshold": 1.1253,
+    "n_flagged": 75,
+    "fpr": 0.075
+  }
+}
