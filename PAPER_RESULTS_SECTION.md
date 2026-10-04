@@ -6,7 +6,7 @@ Existing agent-security work treats behavioral and hardware isolation as disjoin
 ## Introduction
 Multi-tenant agent architectures face cross-plane security threats that isolated defenses consistently miss. While existing approaches focus on either prompt injection boundaries or hardware-level sanitization, they fail to model the intersection of behavioral divergence and physical resource persistence. 
 
-Our findings indicate that single-plane defenses are insufficient. Although we observe that implicit zero-initialization on some hardware configurations (e.g., RTX 3050) acts as a vendor-specific mitigation, hardware behavior remains non-uniform across cloud GPU fleets (as demonstrated by vulnerabilities like LeftoverLocals). CPSI is designed to defend against configurations where this zero-initialization guarantee is absent or circumvented.
+Our findings indicate that single-plane defenses are insufficient. All tested architectures (RTX 3050, A100, Tesla T4, RTX 4090) yielded a Lexical Recovery (LR) of 0.0%, which reflects vendor zero-initialization mitigations. The threat model is motivated by prior art such as LeftoverLocals (CVE-2023-43695) and non-uniform fleet behavior, not our own positive observation. Our zero-LR results motivate a defensive-by-design posture: CPSI must protect against configurations where this mitigation is absent, partial, or bypassed.
 
 By jointly evaluating the agent, resource, and infrastructure planes, CPSI detects sophisticated state-bleeding attacks that exploit these cross-plane gaps. 
 
@@ -19,6 +19,8 @@ The evaluation uses a deterministic dataset of 1,500 scenarios (500 calibration,
 The primary Max-CPSI formulation is:
 
 $$CPSI_{\mathrm{max}} = \max(CDDI,\;RVS,\;PERAI_{\mathrm{budget}},\;LR_{\mathrm{hardware}})$$
+
+We utilize a maximum ($\max$) aggregation function because admission safety is inherently a conjunctive security property. In this defense-in-depth model, any single plane exceeding its critical threshold constitutes sufficient grounds for access denial. If we were to employ a weighted sum, a low risk score on the infrastructure plane could mathematically offset a critically high agent-behavioral score, directly violating the intended security semantics. The $\max$ function enforces a strict "weakest link" principle, ensuring that vulnerabilities detected in one plane cannot be masked by nominal behavior in another.
 
 A cross-plane ablation was run to determine whether jointly evaluating agent, resource, and infrastructure/remanence state provides security-event coverage beyond isolated planes.
 
@@ -33,6 +35,8 @@ A cross-plane ablation was run to determine whether jointly evaluating agent, re
 | Full CPSI                 | Internal   |  **0.8741** | **0.9761** | 0.6579 | 0.0 |           552 |
 
 Full CPSI achieves the highest ROC-AUC (0.8741), though Agent+Resource outperforms it on recall (0.7318 vs 0.6579) and attack prevention count (614 vs 552) at the evaluated threshold. The Infrastructure plane contributes no recall in isolation and does not improve recall when paired with Agent alone. (Unique cross-plane prevention is examined further in the tenant-transition section).
+
+**Baseline Comparison:** To demonstrate that CPSI earns its architectural complexity, we compare Full CPSI against three simpler baselines using the 1,000-case held-out test set. Baseline A (CDDI-only, representing the agent plane) achieves a ROC-AUC of 0.7455. Baseline B (PERAI-only, representing the resource plane) achieves a ROC-AUC of 0.7181. Baseline C (a majority-class classifier that always predicts the 84% malicious base rate) yields 84% raw accuracy but mathematically provides 0% recall on benign cases, rendering it useless for safe tenant admission. In contrast, Full CPSI achieves a ROC-AUC of 0.8741. This significant improvement over single-signal alternatives validates the necessity of the multi-plane integration.
 
 PR-AUC values across configurations are high overall, which is partly expected given the 84% malicious base rate.
 
@@ -66,6 +70,12 @@ The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on 
 | Recall (attacks) | 1.0 | 1.0 |
 | FPR (benign test set) | 1.0 | 0.0 |
 | ROC-AUC | 1.0 | 1.0 |
+
+### Discussion: Threshold Transfer Failure
+
+The coexistence of a perfect continuous discrimination score (ROC-AUC = 1.0000) and a maximal false positive rate (FPR = 1.0000) on the AgentDojo dataset highlights a critical threshold transfer failure. The fixed operational threshold was originally calibrated on an internal synthetic distribution with an 84% malicious base rate. When transferred zero-shot to the AgentDojo benign distribution, the fixed threshold was entirely subsumed by the benign score distribution, leading to uniform false positives. Mechanistically, this indicates that while the relative ordering of benign and malicious cases remains perfectly preserved (hence ROC-AUC = 1.0000), the absolute score magnitude shifted.
+
+We frame this as a known operational limitation rather than an architectural failure. The continuous discrimination capacity of the model remains intact; only the fixed operating point broke. To mitigate this distribution shift in production environments, we propose two concrete solutions: (a) per-deployment threshold recalibration utilizing a small labeled pilot set of benign and malicious interactions specific to the target deployment environment to establish a localized operating threshold (as demonstrated by our 95th-percentile recalibration), and (b) Platt scaling or isotonic regression as post-hoc calibration to map raw continuous scores to calibrated empirical probabilities before thresholding.
 
 ---
 
@@ -107,4 +117,12 @@ To assess generalizability of the H1 finding beyond the primary test platform, w
 | RTX 4090 | Ada Lovelace (SM 8.9) | 2026-10-04 | Vast.ai interruptible | N/A | 0.0 | NEGATIVE |
 | A100-PCIE-40GB (Run 2) | Ampere (SM 8.0) | 2026-10-04 | Vast.ai interruptible | Enabled | 0.0 | NEGATIVE |
 
-Both platforms returned LR = 0.0, providing evidence that driver-level zero-initialization is consistent across NVIDIA consumer and datacenter GPU families under tested driver versions. The A100's hardware ECC adds an additional physical-layer scrubbing mechanism independent of the driver, further reducing the residual state surface. These findings are consistent with the threat model established in Section 3: remanence is architecture-conditional (LeftoverLocals, 2024), and its absence under current NVIDIA drivers does not preclude its presence on heterogeneous fleets or under future driver regressions — motivating the CPSI admission gate regardless of the per-GPU baseline result.
+All tested architectures (RTX 3050, A100, Tesla T4, RTX 4090) returned LR = 0.0, providing evidence that driver-level zero-initialization is consistent across NVIDIA consumer and datacenter GPU families under tested driver versions. The A100's hardware ECC adds an additional physical-layer scrubbing mechanism independent of the driver. These findings confirm that our threat model is motivated by prior art (e.g., LeftoverLocals) and non-uniform fleet behavior, rather than our own positive observation of remanence. Our zero-LR results motivate a defensive-by-design posture: CPSI must protect against configurations where this mitigation is absent, partial, or bypassed.
+
+## Related Work
+
+Recent advancements in agent authorization and tool-call safety have introduced several notable frameworks, including AgentVisor, aiAuthZ, ScopeGate, InjecAgent, and AgentDojo. These systems primarily focus on establishing robust intra-session behavioral boundaries and preventing prompt injection or unauthorized tool execution within a single operational context. While highly effective at constraining an agent's immediate action space, these defenses are inherently single-plane. They do not address the complex intersection of behavioral divergence and physical resource persistence, nor do they manage cross-tenant admission at physical transition points.
+
+Parallel efforts in hardware and accelerator isolation have produced mitigations for physical-layer vulnerabilities, such as those exposed by LeftoverLocals. Technologies like NVIDIA Multi-Instance GPU (MIG), Confidential Computing on GPUs, and Kubernetes Device Plugins provide robust hardware-layer partitioning and memory isolation. However, these infrastructure-level defenses operate agnostically of the semantic or behavioral state of the workloads they isolate. They address the physical separation of tenants but fail to bind these resource boundaries to the higher-level agent authorization context.
+
+The critical gap in the literature lies in integrated, compositional defenses. Currently, no existing work formally couples agent-behavioral signals with physical accelerator state at the tenant-transition admission boundary. As our prior art audit confirms, there is no direct coverage for a system that jointly evaluates semantic intent, resource consumption, and physical remanence. The Cross-Plane Security Infrastructure (CPSI) addresses this specific void by enforcing a defense-in-depth architecture that binds these isolated planes into a cohesive admission gate, ensuring that vulnerabilities missing from one abstraction layer are caught by the aggregate evaluation.
