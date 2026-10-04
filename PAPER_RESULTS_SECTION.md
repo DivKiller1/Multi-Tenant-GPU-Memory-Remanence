@@ -58,7 +58,14 @@ AgentDojo provides dynamic agent/tool environments for evaluating prompt-injecti
 
 The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating a distribution shift between the internal synthetic calibration cases and the real AgentDojo prompts. 
 
-To mitigate this threshold-transfer failure, we performed a lightweight percentile-calibration on a held-out slice (50%) of the AgentDojo benign cases, recalibrating the threshold to the 95th percentile of this set. This restored operational performance on the remaining test set, yielding an FPR of 0.0 and maintaining a Recall of 1.0 on the malicious population. This demonstrates that the failure was a calibration issue rather than an architectural limitation. Continuous discrimination and operational threshold performance are distinct; only the former is initially demonstrated here, while the latter can be recovered via in-domain recalibration.
+**Post-Calibration Results (95th-percentile threshold on held-out benign set, n=62):**
+
+| Metric | Pre-Calibration | Post-Calibration |
+|---|---|---|
+| Threshold source | Internal synthetic (fixed) | AgentDojo benign 95th pct (n=62) |
+| Recall (attacks) | 1.0 | 1.0 |
+| FPR (benign test set) | 1.0 | 0.0 |
+| ROC-AUC | 1.0 | 1.0 |
 
 ---
 

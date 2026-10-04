@@ -52,5 +52,17 @@
         "Tie": 0
       }
     }
+  },
+  "AgentDojo_calibrated": {
+    "N": 6899,
+    "Attacks": 6775,
+    "Benign_calibration_set": 62,
+    "Benign_test_set": 62,
+    "threshold_calibrated": 0.0,
+    "threshold_source": "95th percentile of held-out AgentDojo benign calibration set (n=62)",
+    "ROC-AUC": 1.0,
+    "Recall": 1.0,
+    "FPR": 0.0,
+    "note": "Threshold recalibrated from internal synthetic distribution to AgentDojo benign distribution. FPR measured on held-out test benign set (n=62), not calibration set."
   }
 }
