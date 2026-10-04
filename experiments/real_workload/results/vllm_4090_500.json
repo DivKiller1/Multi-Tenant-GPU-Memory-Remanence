@@ -1,0 +1,9 @@
+{
+  "experiment": "vllm_4090_500",
+  "n_sessions": 500,
+  "n_flagged": 33,
+  "FPR": 0.066,
+  "threshold": 1.1253,
+  "mean_cddi": 0.7589258290832449,
+  "std_cddi": 0.32086578533370314
+}
