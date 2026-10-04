@@ -1,0 +1,14 @@
+{
+  "rate_limiter": {
+    "threshold": 0.0,
+    "recall": 0.0,
+    "fpr": 0.0,
+    "roc_auc": 0.5
+  },
+  "token_budget": {
+    "threshold": 43.0,
+    "recall": 0.47729083665300615,
+    "fpr": 0.04897959183653478,
+    "roc_auc": 0.7166875355719976
+  }
+}
