@@ -12,6 +12,7 @@ Phase 1 empirical testing on an NVIDIA RTX 3050 Laptop GPU demonstrated a Lexica
 
 The Admission Gate (Phase 3) enforces a *Verifiable Sanitization* pass whenever the prior tenant's behavioural anomaly (CPSI) breaches the required threshold, effectively treating the driver-level threat as conditional and neutralizing it dynamically.
 
+The absence of remanence on tested NVIDIA hardware does not diminish the architectural motivation for CPSI's hardware-state plane. First, cloud GPU fleets are heterogeneous: AWS, GCP and Azure all offer AMD Instinct and, increasingly, Apple Silicon inference endpoints where LeftoverLocals confirmed remanence. Second, CPSI's defense-in-depth design means behavioral detection (CDDI, RVS) operates independently of hardware state — the system remains effective even when hardware sanitization is present, and adds a critical layer when it is absent.
 ## 2. Prompt-Driven Privilege Escalation
 **Reference Literature**: *InjecAgent (2023)*
 
