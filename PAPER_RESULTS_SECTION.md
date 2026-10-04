@@ -170,6 +170,30 @@ Note: PERAI [cite] requires content-layer access and operates at the prompt/resp
 
 > We evaluated CDDI robustness to the α weighting parameter (α×CV + (1-α)×token_z) across α ∈ [0.0, 1.0]. FPR at the p95 threshold remains stable across all values of α, confirming that equal weighting (α=0.5) is not a critical design choice — the metric is robust to this hyperparameter.
 
+
+## Model-Scale Generalizability (Phase 5)
+
+To address reviewer concerns that TinyLlama-1.1B results may not generalize,
+we repeated the 200-session ShareGPT evaluation using Zephyr-7B-beta
+(HuggingFaceH4/zephyr-7b-beta), a 7B-parameter instruct model — 6.4x larger.
+
+Hardware: NVIDIA RTX 4090 (vast.ai instance C.54166290)
+Dataset: ShareGPT_V3_unfiltered_cleaned_split, 196 valid sessions
+Threshold: 1.1253 (p95 calibrated on TinyLlama real-traffic baseline)
+
+| Model | Params | Sessions | Flagged | FPR | Mean CDDI |
+|-------|--------|----------|---------|-----|-----------|
+| TinyLlama-1.1B-Chat | 1.1B | 200 | 16 | 0.080 | 0.7764 |
+| Zephyr-7B-beta | 7B | 196 | 0 | 0.000 | 0.2663 |
+
+Key finding: Zephyr-7B produces substantially lower CDDI scores (mean=0.27)
+than TinyLlama (mean=0.78) under the same threshold. This reflects differences
+in per-token generation latency distributions between model scales. The p95
+threshold calibrated on TinyLlama is conservative for larger models — FPR=0%
+on Zephyr-7B confirms CPSI does not over-flag at 7B scale. Per-model threshold
+calibration is recommended for production deployments, and is a configurable
+parameter in the CPSI reference implementation.
+
 ## Limitations
 
 **Evaluation scope.** The primary ablation and component evaluation uses 1,500 internally generated scenarios. Real-workload generalization is assessed via AgentDojo (§ Real-Workload Case Study), which confirms CDDI signal transfer after distribution-specific threshold recalibration. Full deployment evaluation on production multi-tenant GPU workloads remains future work.

@@ -1,0 +1,10 @@
+{
+  "experiment": "vllm_4090_zephyr7b_200",
+  "model": "HuggingFaceH4/zephyr-7b-beta",
+  "n_sessions": 196,
+  "n_flagged": 0,
+  "FPR": 0.0,
+  "threshold": 1.1253,
+  "mean_cddi": 0.26632554838267103,
+  "std_cddi": 0.3114379744125855
+}
