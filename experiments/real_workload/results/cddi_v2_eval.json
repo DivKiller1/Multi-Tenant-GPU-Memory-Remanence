@@ -1,0 +1,10 @@
+{
+  "experiment": "cddi_v2_oracle_eval",
+  "formula": "0.4*CV + 0.4*mean_z + 0.2*|lag1_autocorr|",
+  "threshold": 1.1253,
+  "oracle_tpr": 0.0,
+  "benign_fpr": 0.225,
+  "oracle_mean_cddi_v2": 0.8689784071992726,
+  "benign_mean_cddi_v2": 0.964690437927513,
+  "verdict": "REJECTED - autocorrelation term raises FPR to 22.5% without improving oracle TPR. Benign diverse-query sessions produce similar lag-1 autocorrelation noise as oracle alternating pattern. Frequency-domain approach needed."
+}

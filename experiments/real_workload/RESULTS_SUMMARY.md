@@ -50,3 +50,25 @@ CDDI effectively detects sweep-style memory-probing attacks (42.5% TPR) with ver
 
 ### Paper Claim
 CDDI detects systematic memory-probing sweep attacks at TPR=77.5%, FPR=1.53% for sessions ≥10 queries. Oracle attacks are statistically anomalous but evade magnitude-based thresholding — identified limitation, proposed fix: autocorrelation term in future CDDI version.
+
+## CDDI v2 Ablation — Autocorrelation Extension (Phase 5c)
+
+**Instance**: C.54178506 (RTX 4090, vast.ai)
+**Date**: 2026-10-04
+
+### Motivation
+Oracle-10q sessions produce CDDI_v1=0.957 (elevated vs benign 0.761) but fall below threshold 1.1253. Hypothesis: adding lag-1 autocorrelation of timing sequence would detect oracle\'s alternating short/long pattern.
+
+### Formula Tested
+CDDI_v2 = 0.4×CV + 0.4×mean_z + 0.2×|lag1_autocorr(response_times)|
+
+### Result
+| Metric | Value |
+|--------|-------|
+| Oracle TPR | 0% (unchanged) |
+| Benign FPR | **22.5%** (was 1.53%) |
+| Oracle mean CDDI_v2 | 0.869 |
+| Benign mean CDDI_v2 | 0.965 |
+
+### Conclusion
+**CDDI_v2 rejected.** Benign diverse-query sessions produce lag-1 autocorrelation noise comparable to oracle\'s alternating signal — the term is not discriminative at session level. Oracle detection requires frequency-domain analysis (FFT of timing sequence over 20+ queries) to isolate the periodic component from background noise. Identified as future work. CDDI_v1 (0.5×CV + 0.5×mean_z) remains the paper\'s proposed formula.
