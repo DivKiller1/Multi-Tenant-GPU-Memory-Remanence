@@ -1,0 +1,22 @@
+{
+  "experiment": "multi_tenant_transition",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "hardware": "cuda",
+  "threshold": 1.1253,
+  "transitions": [
+    {
+      "tenant_a": {"label": "TenantA_sweep_attack", "cddi": 0.0479, "decision": "ADMIT"},
+      "gate_decision": "ADMIT",
+      "ttso_ms": 0.0,
+      "tenant_b_outcome": "TenantB_admitted",
+      "tenant_b": {"label": "TenantB_benign", "cddi": 0.9724, "decision": "ADMIT"}
+    },
+    {
+      "tenant_a": {"label": "TenantA_benign", "cddi": 0.9764, "decision": "ADMIT"},
+      "gate_decision": "ADMIT",
+      "ttso_ms": 0.0,
+      "tenant_b_outcome": "TenantB_admitted",
+      "tenant_b": {"label": "TenantB_benign", "cddi": 0.8289, "decision": "ADMIT"}
+    }
+  ]
+}
