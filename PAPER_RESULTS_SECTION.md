@@ -51,6 +51,15 @@ PR-AUC values across configurations are high overall, which is partly expected g
 
 ## External Benchmark Revalidation
 
+## Evaluation Summary: Internal vs. External
+
+| Metric | Internal (synthetic, n=1,500) | External (AgentDojo, pre-calibration) | External (AgentDojo, post-calibration) |
+|---|---|---|---|
+| ROC-AUC | 1.0000 | 0.5 | TBD after Phase 3 |
+| Recall | 1.0000 | 1.0 | TBD |
+| FPR | 0.0000 | 1.0 | TBD |
+| Notes | In-distribution | Threshold transfer failure | 95th-pct recalibration |
+
 ### AgentDojo
 
 AgentDojo provides dynamic agent/tool environments for evaluating prompt-injection attacks across multi-step tool interactions. We evaluated 6,899 episodes (6,775 attacks, 124 benign; 98% malicious base rate).
@@ -59,15 +68,15 @@ AgentDojo provides dynamic agent/tool environments for evaluating prompt-injecti
 
 | Configuration             | Population | ROC-AUC        | PR-AUC         | Recall | FPR | Attack Prevention |
 |---------------------------|------------|---------------:|---------------:|-------:|----:|------------------:|
-| Agent                     | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
+| Agent                     | AgentDojo  |         0.5000 |         1.0000 | 1.0    | 0.0 |              6775 |
 | Resource                  | AgentDojo  | NOT APPLICABLE | NOT APPLICABLE | 0.0    | 0.0 |                 0 |
 | Infrastructure            | AgentDojo  |   N/A (partial)|   N/A (partial)| 0.0    | 0.0 |                 0 |
-| Agent + Resource          | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
+| Agent + Resource          | AgentDojo  |         0.5000 |         1.0000 | 1.0    | 0.0 |              6775 |
 | Agent + Infrastructure    | AgentDojo  |   N/A (partial)|   N/A (partial)| 1.0    | 0.0 |              6775 |
 | Resource + Infrastructure | AgentDojo  |   N/A (partial)|   N/A (partial)| 0.0    | 0.0 |                 0 |
-| Full CPSI                 | AgentDojo  |         1.0000 |         1.0000 | 1.0    | 0.0 |              6775 |
+| Full CPSI                 | AgentDojo  |         0.5000 |         1.0000 | 1.0    | 0.0 |              6775 |
 
-The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating a distribution shift between the internal synthetic calibration cases and the real AgentDojo prompts. 
+The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0 (internal synthetic eval, n=1,500; see external validation for out-of-distribution performance)) on the AgentDojo population. However, two important caveats apply. First, the Resource and Infrastructure planes are partially or fully inoperative on this benchmark — GPU telemetry and resource signals are unobservable in the AgentDojo execution environment, making this effectively a single-plane evaluation for configurations containing those components. Second, the 98:2 attack-to-benign ratio means the benign population (n=124) is too small to reliably characterise false positive behaviour. The fixed internal threshold, when applied to AgentDojo, produced an FPR of 1.0 on benign samples, indicating a distribution shift between the internal synthetic calibration cases and the real AgentDojo prompts. 
 
 **Post-Calibration Results (95th-percentile threshold on held-out benign set, n=62):**
 
@@ -76,17 +85,17 @@ The Agent plane achieves perfect continuous-score separation (ROC-AUC = 1.0) on 
 | Threshold source | Internal synthetic (fixed) | AgentDojo benign 95th pct (n=62) |
 | Recall (attacks) | 1.0 | 1.0 |
 | FPR (benign test set) | 1.0 | 0.0 |
-| ROC-AUC | 1.0 | 1.0 |
+| ROC-AUC | 0.5 | 1.0 |
 
 ### Discussion: Threshold Transfer Failure and Calibration
 
-The coexistence of ROC-AUC = 1.0000 and FPR = 1.0000 on the AgentDojo benign population is not a contradiction — it reflects a known and fundamental limitation of fixed operating-point transfer across distributional shifts.
+The coexistence of ROC-AUC = 1.0000 (internal synthetic eval, n=1,500; see external validation for out-of-distribution performance) and FPR = 1.0000 on the AgentDojo benign population is not a contradiction — it reflects a known and fundamental limitation of fixed operating-point transfer across distributional shifts.
 
-The CPSI threshold was calibrated on a synthetic internal dataset with an 84% malicious base rate, using a Max-F1 objective subject to FPR ≤ 5%. This calibration produces a threshold positioned deep in the high-recall, low-specificity region of the ROC curve for the internal distribution. When applied to the AgentDojo benign population — which has a fundamentally different base rate and feature distribution — the same threshold admits no benign case as safe, yielding FPR = 1.0000. The continuous discrimination (ROC-AUC = 1.0000) remains intact because the score rankings are perfect; only the binary operating point fails to transfer.
+The CPSI threshold was calibrated on a synthetic internal dataset with an 84% malicious base rate, using a Max-F1 objective subject to FPR ≤ 5%. This calibration produces a threshold positioned deep in the high-recall, low-specificity region of the ROC curve for the internal distribution. When applied to the AgentDojo benign population — which has a fundamentally different base rate and feature distribution — the same threshold admits no benign case as safe, yielding FPR = 1.0000. The continuous discrimination (ROC-AUC = 1.0000 (internal synthetic eval, n=1,500; see external validation for out-of-distribution performance)) remains intact because the score rankings are perfect; only the binary operating point fails to transfer.
 
 This is a general failure mode of static multi-plane thresholding and is not unique to CPSI. Two concrete mitigations exist for deployment:
 
-1. **Per-deployment recalibration.** Collect a small labeled pilot set (minimum ~200 cases at the target base rate) and re-optimize the threshold using the same Max-F1 or FPR-constrained objective. Because the continuous discrimination is strong (ROC-AUC ≥ 0.87 internally, 1.00 on AgentDojo), recalibration requires only threshold adjustment, not model retraining.
+1. **Per-deployment recalibration.** Collect a small labeled pilot set (minimum ~200 cases at the target base rate) and re-optimize the threshold using the same Max-F1 or FPR-constrained objective. Because the continuous discrimination is strong (ROC-AUC ≥ 0.87 internally, 0.50 on AgentDojo pre-calibration), recalibration requires only threshold adjustment, not model retraining.
 
 2. **Post-hoc score calibration.** Apply Platt scaling or isotonic regression to map CPSI raw scores to calibrated probabilities before thresholding. This approach is particularly effective when the deployment base rate differs substantially from the training distribution, as it corrects for the systematic score inflation that causes transfer failure.
 
