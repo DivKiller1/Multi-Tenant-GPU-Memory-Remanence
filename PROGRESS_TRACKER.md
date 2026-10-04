@@ -59,6 +59,16 @@
 |-----|------|-----|-------------|-----|---------|
 | T4-Run-1 (full harness) | 2026-10-04T10:38:21Z | NVIDIA Tesla T4 | Turing (SM 7.5) | 0.0 | NEGATIVE |
 
+### 1.3d Cross-Architecture Replication (RTX 4090 — Ada Lovelace)
+| Run | Date | GPU | Architecture | LR | Verdict |
+|-----|------|-----|-------------|-----|---------|
+| 4090-Run-1 (full harness) | 2026-10-04T10:50:22Z | NVIDIA GeForce RTX 4090 | Ada Lovelace (SM 8.9) | 0.0 | NEGATIVE |
+
+### 1.3e A100 Replication Run 2 (independent instance)
+| Run | Date | GPU | Architecture | ECC | LR | Verdict |
+|-----|------|-----|-------------|-----|----|---------|
+| A100-Run-3 (full harness) | 2026-10-04T10:57:22Z | NVIDIA A100-PCIE-40GB | Ampere (SM 8.0) | Enabled | 0.0 | NEGATIVE |
+
 **Key difference from RTX 3050**: A100 has ECC enabled (hardware-level memory scrubbing on deallocation) in addition to driver-level zero-init. Two independent mechanisms enforce remanence prevention on datacenter-class GPUs.
 
 **Cross-architecture conclusion**: LR = 0.0 replicated across consumer (RTX 3050, Laptop, driver ~530.x, CUDA 12.x) and datacenter (A100 PCIe-40GB, driver 595.71.05, CUDA 13.2) NVIDIA GPUs. This strengthens the H1 reframing: driver-level sanitization appears consistent across NVIDIA current driver stack; the runtime admission gate remains necessary for heterogeneous fleets and future driver regressions.

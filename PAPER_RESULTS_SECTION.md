@@ -99,15 +99,12 @@ No single configuration dominates across all objectives. Threshold recalibration
 
 To assess generalizability of the H1 finding beyond the primary test platform, we replicated the baseline experiment on a second GPU architecture rented from a commercial cloud GPU provider (vast.ai).
 
-| Property | RTX 3050 Laptop GPU | A100 PCIe-40GB (Cloud) | Tesla T4 (Cloud) |
-|---|---|---|---|
-| Architecture | Ampere (consumer/laptop) | Ampere (datacenter) | Turing (SM 7.5) |
-| Driver Version | ~530.x | 595.71.05 | vast.ai C.54137355 |
-| CUDA Version | 12.x | 13.2 | 13.0 |
-| ECC Enabled | No | **Yes** | N/A |
-| Experiment Date | 2026-09-23 | 2026-10-04 | 2026-10-04 |
-| Lexical Recovery (LR) | **0.0** | **0.0** | **0.0** |
-| match_count / bytes_scanned | 0 / 268,435,456 | 0 / 268,435,456 | 0 / 268,435,456 |
-| Verdict | NEGATIVE | NEGATIVE | NEGATIVE |
+| GPU | Architecture | Date | Setup / Driver | ECC | LR | Verdict |
+|---|---|---|---|---|---|---|
+| RTX 3050 Laptop GPU | Ampere (consumer/laptop) | 2026-09-23 | Driver ~530.x | No | 0.0 | NEGATIVE |
+| A100 PCIe-40GB (Cloud) | Ampere (datacenter) | 2026-10-04 | Driver 595.71.05 | Yes | 0.0 | NEGATIVE |
+| Tesla T4 | Turing (SM 7.5) | 2026-10-04 | Vast.ai interruptible | N/A | 0.0 | NEGATIVE |
+| RTX 4090 | Ada Lovelace (SM 8.9) | 2026-10-04 | Vast.ai interruptible | N/A | 0.0 | NEGATIVE |
+| A100-PCIE-40GB (Run 2) | Ampere (SM 8.0) | 2026-10-04 | Vast.ai interruptible | Enabled | 0.0 | NEGATIVE |
 
 Both platforms returned LR = 0.0, providing evidence that driver-level zero-initialization is consistent across NVIDIA consumer and datacenter GPU families under tested driver versions. The A100's hardware ECC adds an additional physical-layer scrubbing mechanism independent of the driver, further reducing the residual state surface. These findings are consistent with the threat model established in Section 3: remanence is architecture-conditional (LeftoverLocals, 2024), and its absence under current NVIDIA drivers does not preclude its presence on heterogeneous fleets or under future driver regressions — motivating the CPSI admission gate regardless of the per-GPU baseline result.
