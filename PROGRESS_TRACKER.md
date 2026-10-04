@@ -54,6 +54,11 @@
 | A100-Run-1 (standalone probe) | 2026-10-04T10:13Z | NVIDIA A100-PCIE-40GB | 595.71.05 | 13.2 | Enabled | 0.0 | NEGATIVE |
 | A100-Run-2 (full harness) | 2026-10-04T10:14:56Z | NVIDIA A100-PCIE-40GB | 595.71.05 | 13.2 | Enabled | 0.0 | NEGATIVE |
 
+### 1.3c Cross-Architecture Replication (Tesla T4 — Turing)
+| Run | Date | GPU | Architecture | LR | Verdict |
+|-----|------|-----|-------------|-----|---------|
+| T4-Run-1 (full harness) | 2026-10-04T10:38:21Z | NVIDIA Tesla T4 | Turing (SM 7.5) | 0.0 | NEGATIVE |
+
 **Key difference from RTX 3050**: A100 has ECC enabled (hardware-level memory scrubbing on deallocation) in addition to driver-level zero-init. Two independent mechanisms enforce remanence prevention on datacenter-class GPUs.
 
 **Cross-architecture conclusion**: LR = 0.0 replicated across consumer (RTX 3050, Laptop, driver ~530.x, CUDA 12.x) and datacenter (A100 PCIe-40GB, driver 595.71.05, CUDA 13.2) NVIDIA GPUs. This strengthens the H1 reframing: driver-level sanitization appears consistent across NVIDIA current driver stack; the runtime admission gate remains necessary for heterogeneous fleets and future driver regressions.
