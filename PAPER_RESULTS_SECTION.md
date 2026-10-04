@@ -87,3 +87,20 @@ Configuration selection should follow the primary security objective:
 - **If tenant-transition coverage is the priority**, Resource+Infrastructure achieves equivalent unique prevention (58/58) at lower architectural complexity than Full CPSI.
 
 No single configuration dominates across all objectives. Threshold recalibration per deployment context is recommended before operationalising any configuration, particularly given the FPR instability observed on the AgentDojo benign population.
+
+### Cross-Architecture Replication of H1 Baseline
+
+To assess generalizability of the H1 finding beyond the primary test platform, we replicated the baseline experiment on a second GPU architecture rented from a commercial cloud GPU provider (vast.ai).
+
+| Property | RTX 3050 Laptop GPU | A100 PCIe-40GB (Cloud) |
+|---|---|---|
+| Architecture | Ampere (consumer/laptop) | Ampere (datacenter) |
+| Driver Version | ~530.x | 595.71.05 |
+| CUDA Version | 12.x | 13.2 |
+| ECC Enabled | No | **Yes** |
+| Experiment Date | 2026-09-23 | 2026-10-04 |
+| Lexical Recovery (LR) | **0.0** | **0.0** |
+| match_count / bytes_scanned | 0 / 268,435,456 | 0 / 268,435,456 |
+| Verdict | NEGATIVE | NEGATIVE |
+
+Both platforms returned LR = 0.0, providing evidence that driver-level zero-initialization is consistent across NVIDIA consumer and datacenter GPU families under tested driver versions. The A100's hardware ECC adds an additional physical-layer scrubbing mechanism independent of the driver, further reducing the residual state surface. These findings are consistent with the threat model established in Section 3: remanence is architecture-conditional (LeftoverLocals, 2024), and its absence under current NVIDIA drivers does not preclude its presence on heterogeneous fleets or under future driver regressions — motivating the CPSI admission gate regardless of the per-GPU baseline result.
