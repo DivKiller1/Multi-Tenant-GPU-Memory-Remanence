@@ -1,0 +1,1 @@
+{"sweep": {"mean": 0.0694, "std": 0.0570, "n": 50}, "benign": {"mean": 0.9972, "std": 0.2062, "n": 50}, "tau": 1.1253, "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0", "hardware": "cuda/T4"}

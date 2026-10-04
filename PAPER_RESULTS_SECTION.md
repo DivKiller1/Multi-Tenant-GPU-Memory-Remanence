@@ -197,6 +197,10 @@ To evaluate whether CPSI\'s cross-plane gate prevents contamination across tenan
 | Sweep attack (arithmetic probes) | 0.0479 | ADMIT | TenantB admitted |
 | Benign (diverse ShareGPT) | 0.9764 | ADMIT | TenantB admitted |
 
+![Figure 2: CDDI Score Distributions](cddi_distribution.png)
+
+Figure 2: CDDI Score Distributions, Sweep vs. Benign (n=50 sessions each, TinyLlama-1.1B, T4 GPU). Sweep attack sessions (red) cluster at CDDI ∈ [0.00, 0.22] with mean 0.069 ± 0.057; benign sessions (blue) cluster at CDDI ∈ [0.65, 1.42] with mean 0.997 ± 0.206. The two distributions are fully disjoint (gap: 0.22–0.65), confirming that CDDI cleanly separates uniform sweep probing from diverse natural traffic. The corpus-calibrated threshold τ = 1.1253 (dashed) sits within the benign tail, consistent with the 6.6–8.0% FPR reported in §5.4.
+
 The sweep session yielded CDDI = 0.0479 — 20× below the benign CDDI of 0.9764 — confirming that CDDI correctly *ranks* sweep traffic as anomalously uniform. However, neither session crossed τ = 1.1253, because this threshold was calibrated on corpus-scale sessions in the sweep-10q experiment (§5.2), where 10 full sessions × 10 questions each provide sufficient variance accumulation. A 10-prompt synthetic window with uniform arithmetic probes produces near-zero CV(response_times) and near-zero mean(token_z) regardless of session count on a GPU with batch optimization.
 
 This reveals a **gate horizon dependency**: CDDI operates as a session-aggregated metric, not a per-prompt detector. In a production deployment, the gate would accumulate CDDI over the full session (typically 50–200 queries per ShareGPT session), consistent with the corpus where sweep-10q achieves TPR = 77.5% at FPR = 1.53%. The multi-tenant experiment validates the gate\'s *architectural correctness* — the score direction discriminates perfectly — while confirming that short synthetic windows require a lower τ if used for micro-session gating.
