@@ -1,0 +1,10 @@
+{
+  "experiment": "sweep_10q_eval",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "threshold_paper": 1.1253,
+  "n_sessions": 40,
+  "n_detected": 31,
+  "tpr": 0.775,
+  "mean_cddi": 1.1938685965950007,
+  "std_cddi": 0.25947432611044347
+}
