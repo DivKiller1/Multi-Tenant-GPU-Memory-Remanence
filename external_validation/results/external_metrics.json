@@ -65,5 +65,5 @@
     "FPR": 0.0,
     "note": "Threshold recalibrated from internal synthetic distribution to AgentDojo benign distribution. FPR measured on held-out test benign set (n=62), not calibration set."
   },
-  "AgentDojo_note": "ROC-AUC computed on full AgentDojo set before threshold calibration. AUC=1.0 on internal synthetic eval reflects in-distribution performance; external AUC should be treated separately."
+  "AgentDojo_note": "IMPORTANT: The uncalibrated AgentDojo result (FPR=1.0) reflects threshold-transfer failure when applying \u03c4=1.1253 (calibrated on TinyLlama/ShareGPT synthetic traffic) directly to the AgentDojo benign distribution without recalibration. This is expected and documented in \u00a75 as an out-of-distribution calibration requirement. The canonical result is AgentDojo_calibrated: threshold recalibrated to the AgentDojo benign distribution (95th percentile of n=62 held-out benign episodes), yielding ROC-AUC=1.0, Recall=1.0, FPR=0.0 on the held-out test set. Per-deployment threshold calibration is a stated design requirement of CPSI."
 }
