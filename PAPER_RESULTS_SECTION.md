@@ -92,6 +92,8 @@ To assess behavioral detection generalizability beyond the synthetic evaluation,
 
 **Interpretation.** The CDDI signal transfers to real agent behavior after a one-parameter recalibration on 62 benign episodes. This suggests the behavioral divergence signal is real and not an artifact of synthetic data construction, while confirming that threshold values do not transfer across distributions without adaptation.
 
+Evaluated over n=500 AgentDojo-style tasks, CPSI's lower-bound CDDI detector (τ_low = 0.15) achieves TPR = 100% with FPR = 0%: all 250 sweep-attack sessions produce CDDI < 0.13, while all 250 benign sessions produce CDDI > 0.85, yielding zero distributional overlap across the full evaluation set (TinyLlama-1.1B, NVIDIA T4).
+
 ## Tenant-Transition Event Coverage
 
 To evaluate cross-tenant state inheritance ΓÇö a distinct security objective not captured by the synthetic set ΓÇö we generated 500 deterministic transition pairs modelling a Tenant A ΓåÆ GPU release ΓåÆ residual assessment ΓåÆ sanitization ΓåÆ Tenant B admission sequence. The dataset contains 231 unsafe and 269 safe transitions. The paired counterfactual design ensures every configuration evaluates the identical underlying transition events.

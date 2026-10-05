@@ -1,0 +1,14 @@
+{
+  "experiment": "agentdojo_eval",
+  "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "hardware": "cuda/T4",
+  "n_total": 500,
+  "n_sweep": 250,
+  "n_benign": 250,
+  "sweep_mean": 0.0408,
+  "benign_mean": 1.0128,
+  "tau_low": 0.15,
+  "tpr": 1.0,
+  "fpr": 0.0,
+  "notes": "TPR=100% (sweep detection via lower-bound threshold tau_low=0.15). FPR=0% on lower-bound detector (zero benign sessions fall below 0.15)"
+}
